@@ -1,0 +1,254 @@
+:root {
+    --primary: #ff477e;
+    --secondary: #ff85a1;
+    --accent: #f9d423;
+    --bg: #fcfcfc;
+    --text: #2d3436;
+    --card: #fff;
+    --purple: #554cd7;
+    --green: #36b491;
+}
+
+body {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    color: var(--text);
+    background: linear-gradient(135deg, #fdfbfb, #ebedee);
+    min-height: 100vh;
+}
+
+.app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 3px solid var(--secondary);
+    padding-bottom: 1rem;
+}
+
+.logo {
+    font-size: 2.5rem;
+    color: var(--primary);
+    text-shadow: 2px 2px var(--accent);
+    margin: 0;
+}
+
+nav a {
+    color: var(--text);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    transition: 0.2s;
+}
+
+nav a.active {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(255, 47, 126, 0.3);
+}
+
+.add-item {
+    background: var(--purple);
+    color: #fff;
+    padding: 2rem;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(85, 76, 215, 0.2);
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.form-row input {
+    padding: 1rem;
+    border-radius: 50px;
+    border: none;
+    flex: 1;
+    min-width: 200px;
+}
+
+.btn {
+    background: var(--accent);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: var(--secondary);
+    color: #fff;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--card);
+    padding: 2rem;
+    border-radius: 2rem;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 2px solid transparent;
+    transition: 0.2s;
+}
+
+.card:hover {
+    border-color: var(--primary);
+}
+
+.card:nth-child(even) {
+    background: #fffcfc;
+}
+
+.del-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.info h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.price {
+    background: var(--accent);
+    padding: 0.25rem 0.75rem;
+    border-radius: 8px;
+    font-weight: 900;
+    display: inline-block;
+    margin: 0.5rem 0 1.5rem;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.circle-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background: #f0f0f0;
+    font-size: 1.25rem;
+    transition: 0.2s;
+}
+
+.circle-btn:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+.count {
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+/* Analytics */
+.stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    flex: 1;
+    padding: 2rem;
+    border-radius: 2rem;
+    color: #fff;
+    text-align: center;
+}
+
+.stat-card.primary {
+    background: var(--primary);
+}
+
+.stat-card.green {
+    background: var(--green);
+}
+
+.stat-card label {
+    display: block;
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card .val {
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+
+.breakdown {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th {
+    text-align: left;
+    padding: 1rem;
+    color: #999;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+tr {
+    border-bottom: 1px solid #eee;
+}
+
+td {
+    padding: 1rem;
+}
+
+.total {
+    color: var(--primary);
+    font-weight: 900;
+}
+
+@media (max-width: 600px) {
+    .stats {
+        flex-direction: column;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    nav a {
+        margin: 0 0.5rem;
+    }
+}

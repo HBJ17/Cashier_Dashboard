@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gola & Gossips | Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="app">
+        <header>
+            <h1 class="logo">Gola & Gossips</h1>
+            <nav>
+                <a href="/" class="active">Menu</a>
+                <a href="/analytics">Analytics</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="add-item">
+                <h2>Add Item</h2>
+                <form action="/add_product" method="POST" class="form-row">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="number" step="0.01" name="price" placeholder="Price" required>
+                    <button type="submit" class="btn">Add</button>
+                </form>
+            </section>
+
+            <div class="grid">
+                {% for p in products %}
+                <div class="card" id="p-{{ p.id }}">
+                    <form action="/delete_product/{{ p.id }}" method="POST" class="delete-form">
+                        <button type="submit" class="del-btn">&times;</button>
+                    </form>
+                    <div class="info">
+                        <h3>{{ p.name }}</h3>
+                        <span class="price">Rs.{{ "%.2f"|format(p.price) }}</span>
+                    </div>
+                    <div class="controls">
+                        <form action="/update_sale" method="POST">
+                            <input type="hidden" name="product_id" value="{{ p.id }}">
+                            <input type="hidden" name="change" value="-1">
+                            <button type="submit" class="circle-btn">-</button>
+                        </form>
+                        <span class="count">{{ p.sold_count }}</span>
+                        <form action="/update_sale" method="POST">
+                            <input type="hidden" name="product_id" value="{{ p.id }}">
+                            <input type="hidden" name="change" value="1">
+                            <button type="submit" class="circle-btn">+</button>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

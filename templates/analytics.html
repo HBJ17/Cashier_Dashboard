@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gola & Gossips | Analytics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="app">
+        <header>
+            <h1 class="logo">Gola & Gossips</h1>
+            <nav>
+                <a href="/">Menu</a>
+                <a href="/analytics" class="active">Analytics</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="stats">
+                <div class="stat-card primary">
+                    <label>Total Sales</label>
+                    <span class="val">Rs.{{ "%.2f"|format(total_sales) }}</span>
+                </div>
+                <div class="stat-card green">
+                    <label>Items Sold</label>
+                    <span class="val">{{ total_items }}</span>
+                </div>
+            </div>
+
+            <section class="breakdown">
+                <h3>Sale Breakdown</h3>
+                <div class="table-box">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Sold</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for p in products %}
+                            <tr>
+                                <td>{{ p.name }}</td>
+                                <td>{{ p.sold_count }}</td>
+                                <td class="total">Rs.{{ "%.2f"|format(p.price * p.sold_count) }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
