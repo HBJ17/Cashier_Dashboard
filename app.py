@@ -6,9 +6,15 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+import traceback
+
 app = Flask(__name__)
 # Get the database URL from environment variable
 DB_URL = os.environ.get("DATABASE_URL")
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+    return f"An error occurred: {str(e)}<br><pre>{traceback.format_exc()}</pre>", 500
 
 def get_db():
     conn = psycopg2.connect(DB_URL)
