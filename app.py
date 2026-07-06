@@ -30,6 +30,9 @@ def init_db():
     conn.commit()
     conn.close()
 
+# Initialize the database table when the app starts
+init_db()
+
 @app.route('/')
 def index():
     conn = get_db()
